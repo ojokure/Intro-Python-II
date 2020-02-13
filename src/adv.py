@@ -66,7 +66,7 @@ while selection != "q":
         "Whither way goest thou ? \n North(n) \n South(s) \n West(w)\n East(e) \n\n direction:  ")
 
     try:
-        selection = selection.lower()
+        selection = selection[0].lower().strip()
 
         if 'Outside' in player.room.name:
             if selection == "n":
