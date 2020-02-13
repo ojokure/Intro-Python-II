@@ -3,9 +3,10 @@
 
 
 class Room:
-    def __init__(self, name, description):
+    def __init__(self, name, description, item):
         self.name = name
         self.description = description
+        self.item = item
 
     def __str__(self):
-        return f'{self.name} is {self.description}'
+        return f'{self.name} is {self.description} holds {self.item}'

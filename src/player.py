@@ -3,6 +3,7 @@
 
 
 class Player:
-    def __init__(self, name, room):
+    def __init__(self, name, room, item):
         self.name = name
         self.room = room
+        self.item = item
