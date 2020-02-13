@@ -104,5 +104,5 @@ while selection != "q":
             elif (selection == "n") or (selection == "e") or (selection == "w"):
                 print('oh my, that way leads to destruction, you cannot go')
 
-    except ValueError:
+    except TypeError:
         print('enter your direction as an alphabet e.g west or w')
