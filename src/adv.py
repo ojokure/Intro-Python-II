@@ -59,13 +59,50 @@ selection = None
 
 while selection != "q":
 
-    print(player.room.name)
-    print(player.room.description)
+    print(
+        F"Player {player.name} you are  {player.room.name}, {player.room.description}")
 
-    selection = input("Which Way ?  North(n), South(s), West(w), East(e)  ")
+    selection = str(
+        input("Whither way goest thou ?  North(n), South(s), West(w), East(e)  "))
 
     try:
         selection = selection.lower()
 
+        if 'Outside' in player.room.name:
+            if selection == "n" or selection == "north":
+                player.room = room["foyer"]
+            elif (selection == "e" or selection == "east") or (selection == "s" or selection == "south") or (selection == "w" or selection == "west"):
+                print('oh my, that way leads to destruction, you cannot go')
+
+        elif 'Foyer' in player.room.name:
+            if selection == "n":
+                player.room = room["overlook"]
+            elif selection == "s":
+                player.room = room["outside"]
+            elif selection == "e":
+                player.room = room["narrow"]
+            elif (selection == "w"):
+                print('oh my, that way leads to destruction, you cannot go')
+
+        elif 'Narrow' in player.room.name:
+            if selection == "n":
+                player.room = room["treasure"]
+            elif selection == "w":
+                player.room = room["foyer"]
+            elif (selection == "e") or (selection == "s"):
+                print('oh my, that way leads to destruction, you cannot go')
+
+        elif 'Treasure' in player.room.name:
+            if selection == "s":
+                player.room = room["narrow"]
+            elif (selection == "n") or (selection == "e") or (selection == "w"):
+                print('oh my, that way leads to destruction, you cannot go')
+
+        elif 'Overlook' in player.room.name:
+            if selection == "s":
+                player.room = room["foyer"]
+            elif (selection == "n") or (selection == "e") or (selection == "w"):
+                print('oh my, that way leads to destruction, you cannot go')
+
     except ValueError:
-        print('Please enter your direction as an alphabet e.g west or w')
+        print('enter your direction as an alphabet e.g west or w')
