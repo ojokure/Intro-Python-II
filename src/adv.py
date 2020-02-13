@@ -55,9 +55,10 @@ print(player)
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
-selection = None
+quit = False
 
-while selection != "q":
+
+while not quit:
 
     print(
         F"Ahoy ! {player.name} you are on road {player.room.name}, {player.room.description}")
@@ -65,44 +66,48 @@ while selection != "q":
     selection = input(
         "Whither way goest thou ? \n North(n) \n South(s) \n West(w)\n East(e) \n\n direction:  ")
 
-    try:
-        selection = selection.lower().strip()[0]
+    if selection == "q":
+        print("You Quit, Game Over")
+        break
+    else:
+        try:
+            selection = selection.lower().strip()[0]
 
-        if 'Outside' in player.room.name:
-            if selection == "n":
-                player.room = room["foyer"]
-            elif (selection == "e") or (selection == "s") or (selection == "w"):
-                print('oh my, that way leads to destruction, you cannot go')
+            if 'Outside' in player.room.name:
+                if selection == "n":
+                    player.room = room["foyer"]
+                elif (selection == "e") or (selection == "s") or (selection == "w"):
+                    print('oh my, that way leads to destruction, you cannot go')
 
-        elif 'Foyer' in player.room.name:
-            if selection == "n":
-                player.room = room["overlook"]
-            elif selection == "s":
-                player.room = room["outside"]
-            elif selection == "e":
-                player.room = room["narrow"]
-            elif (selection == "w"):
-                print('oh my, that way leads to destruction, you cannot go')
+            elif 'Foyer' in player.room.name:
+                if selection == "n":
+                    player.room = room["overlook"]
+                elif selection == "s":
+                    player.room = room["outside"]
+                elif selection == "e":
+                    player.room = room["narrow"]
+                elif (selection == "w"):
+                    print('oh my, that way leads to destruction, you cannot go')
 
-        elif 'Narrow' in player.room.name:
-            if selection == "n":
-                player.room = room["treasure"]
-            elif selection == "w":
-                player.room = room["foyer"]
-            elif (selection == "e") or (selection == "s"):
-                print('oh my, that way leads to destruction, you cannot go')
+            elif 'Narrow' in player.room.name:
+                if selection == "n":
+                    player.room = room["treasure"]
+                elif selection == "w":
+                    player.room = room["foyer"]
+                elif (selection == "e") or (selection == "s"):
+                    print('oh my, that way leads to destruction, you cannot go')
 
-        elif 'Treasure' in player.room.name:
-            if selection == "s":
-                player.room = room["narrow"]
-            elif (selection == "n") or (selection == "e") or (selection == "w"):
-                print('oh my, that way leads to destruction, you cannot go')
+            elif 'Treasure' in player.room.name:
+                if selection == "s":
+                    player.room = room["narrow"]
+                elif (selection == "n") or (selection == "e") or (selection == "w"):
+                    print('oh my, that way leads to destruction, you cannot go')
 
-        elif 'Overlook' in player.room.name:
-            if selection == "s":
-                player.room = room["foyer"]
-            elif (selection == "n") or (selection == "e") or (selection == "w"):
-                print('oh my, that way leads to destruction, you cannot go')
+            elif 'Overlook' in player.room.name:
+                if selection == "s":
+                    player.room = room["foyer"]
+                elif (selection == "n") or (selection == "e") or (selection == "w"):
+                    print('oh my, that way leads to destruction, you cannot go')
 
-    except TypeError:
-        print('enter your direction as an alphabet e.g west or w')
+        except TypeError:
+            print('enter your direction as an alphabet e.g west or w')
