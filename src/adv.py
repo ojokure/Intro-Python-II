@@ -60,18 +60,18 @@ selection = None
 while selection != "q":
 
     print(
-        F"Player {player.name} you are  {player.room.name}, {player.room.description}")
+        F"Ahoy ! {player.name} you are on road {player.room.name}, {player.room.description}")
 
-    selection = str(
-        input("Whither way goest thou ?  North(n), South(s), West(w), East(e)  "))
+    selection = input(
+        "Whither way goest thou ?  North(n), South(s), West(w), East(e)  ")
 
     try:
         selection = selection.lower()
 
         if 'Outside' in player.room.name:
-            if selection == "n" or selection == "north":
+            if selection == "n":
                 player.room = room["foyer"]
-            elif (selection == "e" or selection == "east") or (selection == "s" or selection == "south") or (selection == "w" or selection == "west"):
+            elif (selection == "e") or (selection == "s") or (selection == "w"):
                 print('oh my, that way leads to destruction, you cannot go')
 
         elif 'Foyer' in player.room.name:
