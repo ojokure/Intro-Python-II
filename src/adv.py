@@ -63,7 +63,7 @@ while selection != "q":
         F"Ahoy ! {player.name} you are on road {player.room.name}, {player.room.description}")
 
     selection = input(
-        "Whither way goest thou ? \n North(n) \n South(s) \n West(w)\n East(e) \n direction:  ")
+        "Whither way goest thou ? \n North(n) \n South(s) \n West(w)\n East(e) \n\n direction:  ")
 
     try:
         selection = selection.lower()
